@@ -27,6 +27,6 @@ export class HttpService {
   }
 
   post( params: any, url: string) {
-    // return this.http.post(this.configUrl,params, {this.headers})
+    // return this.http.post(this.configUrl,params, {this.headers})//
   }
 }
