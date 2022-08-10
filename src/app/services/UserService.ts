@@ -28,7 +28,9 @@ export class UserService {
     return this.http.get<User[]>(fullUrl);
   }
 
-  postOneUser( params: User) {
-    // return this.http.post(this.configUrl,params, {this.headers})
+  register( params: User) {
+    let fullUrl = this.usersUrl + "get-all-users";
+    return this.http.post<User>(fullUrl,params);
+
   }
 }
