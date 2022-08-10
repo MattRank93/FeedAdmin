@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../services/UserService";
+import {UtilityService} from "../services/UtilityService";
+
 import { User } from '../models/user';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {HealthResponse} from "../responseObjects/HealthResponse";
+import {UserRequest} from "../requestObjects/UserRequest";
 
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Accept': 'application/json',
-//     'Content-Type': 'application/json'
-//   })
-// };
+
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -17,27 +16,43 @@ import {Observable} from "rxjs";
 })
 export class TestComponent  {
   users: User[];
+  user: User = new User();
+  healthResp: HealthResponse = new  HealthResponse();
 
-  // healthresp : Object;
-  // users: Observable<any> | undefined;
 
-  constructor(private UserService: UserService) {
+  constructor(private userService: UserService, private utilityService: UtilityService) {
 
     this.users = []
   }
 
   ngOnInit() {
-    // this.httpService.get('').subscribe(
-    //   (response) => { this.posts = response; },
-    //   (error) => { console.log(error); }
-    //   );
   }
 
-  testHealth(){
+  getAllUsers(){
 
-     this.UserService.getAllUsers().subscribe(data => {
+     this.userService.getAllUsers().subscribe(data => {
        this.users = data;
      });
+
+
+  }
+
+  getOneUser(username: string){
+    const bodyMessage: UserRequest = {
+      username: username,
+    };
+    this.userService.getOneUser(bodyMessage).subscribe(data => {
+      this.user = data;
+    });
+
+
+  }
+  health(){
+
+    this.utilityService.gethealth().subscribe(data => {
+        this.healthResp = data;
+      }
+    );
 
 
   }

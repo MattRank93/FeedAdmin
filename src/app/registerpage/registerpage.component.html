@@ -1,20 +1,30 @@
-<h1><li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li></h1>
-<p></p>
-<input #username (keyup)="0"><p></p>
-
-<input #email (keyup)="0"><p></p>
-
-<input #password (keyup)="0"><p></p>
-
-<input #firstname (keyup)="0"><p></p>
-
-<input #lastname (keyup)="0"><p></p>
-
-<input #phone (keyup)="0"><p></p>
-
-
-<!--<p>{{box.value}}</p>-->
-<p>{{clickMessage}}</p>
-<button type="button" (click)=registerButton(username.value,email.value,password.value,firstname.value,lastname.value,phone.value)>Click me!</button>
-
+<div class="container">
+  <h1>
+    <li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
+  </h1>
+  <p></p>
+  <p>username</p>
+  <input type="text" class="form-control" id="username" required minlength="5" maxlength="30" name="username" #username (keyup)="0">
+  <p></p>
+  <p>email</p>
+  <input #email (keyup)="0" required>
+  <p></p>
+  <p>password</p>
+  <input #password (keyup)="0">
+  <p></p>
+  <p>firstname</p>
+  <input #firstname (keyup)="0">
+  <p></p>
+  <p>lastname</p>
+  <input #lastname (keyup)="0">
+  <p></p>
+  <p>phone</p>
+  <input #phone (keyup)="0">
+  <p></p>
+  <p>{{clickMessage}}</p>
+  <button type="button"
+          (click)=registerButton(username.value,email.value,password.value,firstname.value,lastname.value,phone.value)>
+    Click me!
+  </button>
+  <div>
 

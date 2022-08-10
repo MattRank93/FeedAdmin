@@ -1,29 +1,74 @@
 <h1><li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li></h1>
 <p>test works!</p>
-<p></p>
-<button type="button" (click)=testHealth()>Click me!</button>
-
-<div>
-<!--  {{this.users.length}}-->
+<button type="button" (click)=health()>Click me!</button>
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">freeMemory</th>
+        <th scope="col">maxMemory</th>
+        <th scope="col">totalMemory</th>
+      </tr>
+      </thead>
+      <tbody>
+        <td>{{ healthResp.freeMemory }}</td>
+        <td>{{ healthResp.maxMemory }}</td>
+        <td>{{ healthResp.totalMemory }}</td>
+      </tbody>
+    </table>
+  </div>
 </div>
-
+<p></p>
+<button type="button" (click)=getAllUsers()>Click me!</button>
 
 <div class="card my-5">
   <div class="card-body">
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
+        <th scope="col">firstname</th>
+        <th scope="col">lastname</th>
+        <th scope="col">phone</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let user of users">
-        <td>{{ user.id }}</td>
         <td>{{ user.username }}</td>
         <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.phone }}</td>
       </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<p>Username</p>
+<input #username (keyup)="0">
+<button type="button" (click)=getOneUser(username.value)>Click me!</button>
+
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">firstname</th>
+        <th scope="col">lastname</th>
+        <th scope="col">phone</th>
+      </tr>
+      </thead>
+      <tbody>
+        <td>{{ user.username }}</td>
+        <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.phone }}</td>
       </tbody>
     </table>
   </div>

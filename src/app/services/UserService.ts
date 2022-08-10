@@ -1,14 +1,7 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from  '@angular/core';
-import {config} from "rxjs";
 import {User} from "../models/user";
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  })
-};
+import {UserRequest} from "../requestObjects/UserRequest";
 
 
 @Injectable({
@@ -28,8 +21,15 @@ export class UserService {
     return this.http.get<User[]>(fullUrl);
   }
 
+  getOneUser(request: UserRequest) {
+    const params = new HttpParams()
+      .set('username', request.username);
+    let fullUrl = this.usersUrl + "get-one-user-param";
+    return this.http.get<User>(fullUrl, {params});
+  }
+
   register( params: User) {
-    let fullUrl = this.usersUrl + "get-all-users";
+    let fullUrl = this.usersUrl + "register";
     return this.http.post<User>(fullUrl,params);
 
   }
