@@ -1,0 +1,30 @@
+<h1><li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li></h1>
+<p>test works!</p>
+<p></p>
+<button type="button" (click)=testHealth()>Click me!</button>
+
+<div>
+<!--  {{this.users.length}}-->
+</div>
+
+
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
